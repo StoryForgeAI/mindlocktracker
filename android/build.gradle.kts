@@ -1,3 +1,5 @@
+import com.android.build.gradle.LibraryExtension
+
 allprojects {
     repositories {
         google()
@@ -14,6 +16,16 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(":app")
+}
+
+subprojects {
+    plugins.withId("com.android.library") {
+        if (name == "device_apps") {
+            extensions.configure<LibraryExtension>("android") {
+                namespace = "fr.g123k.deviceapps"
+            }
+        }
+    }
 }
 
 tasks.register<Delete>("clean") {
