@@ -6,11 +6,12 @@ workflows:
 
     environment:
       flutter: stable
+      groups:
+        # Create this variable group in Codemagic UI and add:
+        # SUPABASE_URL, SUPABASE_ANON_KEY
+        - supabase
       vars:
         PACKAGE_NAME: "com.example.mind_lock_tracker"
-        # Set these in Codemagic UI -> Environment variables.
-        SUPABASE_URL: ""
-        SUPABASE_ANON_KEY: ""
 
     cache:
       cache_paths:
